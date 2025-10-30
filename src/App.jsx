@@ -1,210 +1,330 @@
-import React from "react";
+import React, { useState } from 'react';
 
-export default function App() {
-  const services = [
-    { title: "Visiting Card", desc: "Premium and budget visiting cards in all finishes." },
-    { title: "Letter Head", desc: "Custom letterheads for professional communication." },
-    { title: "Brochure", desc: "Tri-fold, bi-fold brochures and catalogs." },
-    { title: "Standee & Flex", desc: "Large format flex, standees and banners." },
-    { title: "Vinyl Printing", desc: "Indoor & outdoor vinyl, stickers and gumming." },
-    { title: "T-Shirt & Mug Print", desc: "Sublimation & screen printing for garments and mugs." },
-    { title: "Name Plate & Letter Board", desc: "Office signages, nameplates and letter boards." },
-    { title: "Packaging & Accessories", desc: "Bags, boxes, keychains, trophies and corporate gifting." }
+export default function RKPrintWebsite() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  const products = [
+    { name: 'Visiting Card', category: 'cards', icon: '💼', popular: true },
+    { name: 'Letter Head', category: 'stationery', icon: '📄', popular: true },
+    { name: 'ID-Card', category: 'cards', icon: '🪪', popular: true },
+    { name: 'Lanyard', category: 'accessories', icon: '🏷️', popular: false },
+    { name: 'Folder', category: 'stationery', icon: '📁', popular: false },
+    { name: 'Brochure', category: 'marketing', icon: '📰', popular: true },
+    { name: 'Catalogue', category: 'marketing', icon: '📚', popular: false },
+    { name: 'Booklet', category: 'marketing', icon: '📖', popular: false },
+    { name: 'Flyers', category: 'marketing', icon: '📃', popular: true },
+    { name: 'Leaflet', category: 'marketing', icon: '🍃', popular: false },
+    { name: 'Flex Banner', category: 'signage', icon: '🪧', popular: true },
+    { name: 'Vinyl', category: 'signage', icon: '🎨', popular: false },
+    { name: 'Sunboard', category: 'signage', icon: '📋', popular: false },
+    { name: 'Standee', category: 'signage', icon: '🚩', popular: true },
+    { name: 'Carry Bag', category: 'packaging', icon: '🛍️', popular: true },
+    { name: 'Packaging Boxes', category: 'packaging', icon: '📦', popular: true },
+    { name: 'Pen', category: 'accessories', icon: '🖊️', popular: false },
+    { name: 'Diary', category: 'stationery', icon: '📔', popular: false },
+    { name: 'Trophy', category: 'accessories', icon: '🏆', popular: false },
+    { name: 'Medal', category: 'accessories', icon: '🥇', popular: false },
+    { name: 'T-Shirt', category: 'apparel', icon: '👕', popular: true },
+    { name: 'Mug', category: 'gifts', icon: '☕', popular: true },
+    { name: 'Bottle', category: 'gifts', icon: '🍾', popular: false },
+    { name: 'Bag', category: 'accessories', icon: '🎒', popular: false },
+    { name: 'Keychain', category: 'accessories', icon: '🔑', popular: true },
   ];
 
-  function handleQuoteSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value || "Guest";
-    const service = form.service.value || "General";
-    const email = form.email.value || "";
-    const message = form.message.value || "";
-    const subject = `Quote request from ${name} - ${service}`;
-    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AService: ${service}%0D%0AMessage:%0D%0A${message}`;
-    window.location.href = `mailto:ravi@rkprint.co?subject=${encodeURIComponent(subject)}&body=${body}`;
-  }
+  const categories = [
+    { id: 'all', name: 'All Products', icon: '🏪' },
+    { id: 'cards', name: 'Cards & IDs', icon: '💼' },
+    { id: 'stationery', name: 'Stationery', icon: '📄' },
+    { id: 'marketing', name: 'Marketing Materials', icon: '📰' },
+    { id: 'signage', name: 'Signage & Display', icon: '🪧' },
+    { id: 'packaging', name: 'Packaging', icon: '📦' },
+    { id: 'apparel', name: 'Apparel', icon: '👕' },
+    { id: 'gifts', name: 'Gift Items', icon: '🎁' },
+    { id: 'accessories', name: 'Accessories', icon: '🏷️' },
+  ];
+
+  const services = [
+    { title: 'Digital Printing', desc: 'High-quality digital printing for small to medium runs', icon: '🖨️' },
+    { title: 'Offset Printing', desc: 'Cost-effective bulk printing with superior quality', icon: '📑' },
+    { title: 'Screen Printing', desc: 'Perfect for textiles, bags, and promotional items', icon: '🎨' },
+  ];
+
+  const filteredProducts = activeCategory === 'all' 
+    ? products 
+    : products.filter(p => p.category === activeCategory);
 
   return (
-    <div className="min-h-screen">
-      <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-md bg-gradient-to-tr from-[#ff7675] to-[#ff4d4f] flex items-center justify-center text-white font-bold">RK</div>
-          <div>
-            <h1 className="text-2xl font-bold">RK Print NCR</h1>
-            <p className="text-sm text-gray-300">Digital | Offset | Screen Printing — Noida</p>
-          </div>
-        </div>
-        <nav className="hidden md:flex gap-6 items-center text-sm">
-          <a href="#services" className="hover:text-[#ff4d4f]">Services</a>
-          <a href="#portfolio" className="hover:text-[#ff4d4f]">Portfolio</a>
-          <a href="#about" className="hover:text-[#ff4d4f]">About</a>
-          <a href="#contact" className="bg-[#ff4d4f] text-black px-4 py-2 rounded-md">Get Quote</a>
-        </nav>
-      </header>
-
-      <main className="max-w-6xl mx-auto px-6 py-8">
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold">Your One-Stop Print Solution in Noida</h2>
-            <p className="mt-4 text-gray-300">Visiting cards, brochures, flex, vinyl printing, t-shirt & mug prints — fast turnaround, quality finishes and bulk discounts for businesses.</p>
-
-            <div className="mt-6 flex gap-3">
-              <a href="#contact" className="inline-block bg-[#ff4d4f] text-black px-5 py-3 rounded-md font-medium">Request a Quote</a>
-              <a href="#portfolio" className="inline-block border border-gray-700 px-5 py-3 rounded-md">See Portfolio</a>
-            </div>
-
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm text-gray-300">
-              <div className="p-3 bg-[rgba(255,255,255,0.02)] rounded">Fast Turnaround</div>
-              <div className="p-3 bg-[rgba(255,255,255,0.02)] rounded">Bulk Discounts</div>
-              <div className="p-3 bg-[rgba(255,255,255,0.02)] rounded">Custom Sizes</div>
-              <div className="p-3 bg-[rgba(255,255,255,0.02)] rounded">Free Design Support</div>
-              <div className="p-3 bg-[rgba(255,255,255,0.02)] rounded">Doorstep Delivery</div>
-              <div className="p-3 bg-[rgba(255,255,255,0.02)] rounded">Secure Payments</div>
-            </div>
-          </div>
-
-          <div className="bg-[rgba(255,255,255,0.02)] p-4 rounded-md shadow-sm">
-            <img src="/Banner (1).jpg" alt="Business card sample" className="w-full h-64 object-contain rounded-md" />
-            <div className="mt-3 text-xs text-gray-400">Top: visiting card sample — replace with your high-res photos.</div>
-          </div>
-        </section>
-
-        <section id="services" className="mt-12">
-          <h3 className="text-2xl font-semibold">Services</h3>
-          <p className="mt-2 text-gray-300">We offer a complete range of print & branding services:</p>
-
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((s) => (
-              <div key={s.title} className="p-4 border border-[rgba(255,255,255,0.04)] rounded-lg hover:shadow-md transition">
-                <h4 className="font-semibold">{s.title}</h4>
-                <p className="mt-2 text-sm text-gray-300">{s.desc}</p>
-                <button className="mt-4 inline-block text-[#ff4d4f] text-sm">Request Price</button>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ✅ Updated Portfolio Section with multiple visible images */}
-        <section id="portfolio" className="mt-12">
-          <h3 className="text-2xl font-semibold">Portfolio</h3>
-          <p className="mt-2 text-gray-300">Recent work and samples.</p>
-
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[
-              // "/fr1.jpg",
-              // "/fr2.jpg",
-              "/Banner (1).jpg",
-              "/Banner (3).jpg",
-              "/Banner (5).jpg",
-              "/Banner (7).jpg",
-              "/Banner (8).jpg",
-              "/Banner (6).jpg",
-              "/Banner (2).jpg",
-              "/Banner (4).jpg",
-              "/Banner (1).jpeg",
-            ].map((img, index) => (
-              <div
-                key={index}
-                className="rounded-lg overflow-hidden border border-[rgba(255,255,255,0.03)] bg-[rgba(255,255,255,0.02)] hover:scale-105 transition-transform duration-300"
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-white shadow-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <div className="flex items-center">
+              <button 
+                className="md:hidden mr-4 text-2xl"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                <img src={img} alt={`Portfolio ${index + 1}`} className="w-full h-48 object-cover" />
-                <div className="p-3">
-                  <div className="font-medium">Sample Print {index + 1}</div>
-                  <div className="text-xs text-gray-400 mt-1">Description or finish type.</div>
-                </div>
+                {mobileMenuOpen ? '✕' : '☰'}
+              </button>
+              <div>
+                <h1 className="text-3xl font-bold">
+                  <span className="text-orange-600">RK</span>
+                  <span className="text-gray-800"> PRiNT NCR</span>
+                </h1>
+                <p className="text-xs text-gray-600 font-medium">DIGITAL | OFFSET | SCREEN PRINTING</p>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="about" className="mt-12 bg-[rgba(255,255,255,0.02)] p-6 rounded-lg">
-          <div className="md:flex md:gap-6 items-center">
-            <div className="flex-1">
-              <h3 className="text-2xl font-semibold">About RK Print NCR</h3>
-              <p className="mt-3 text-gray-300">Founded by Ravi Kumar, RK Print NCR provides digital, offset and screen printing solutions across Gautam Buddh Nagar. We focus on quality, quick turnarounds and transparent pricing. From single visiting cards to large corporate orders, we handle it all.</p>
-
-              <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
-                <li>✅ High-quality materials</li>
-                <li>✅ Fast & reliable delivery</li>
-                <li>✅ Experienced design support</li>
-                <li>✅ Bulk pricing available</li>
-              </ul>
             </div>
 
-            <div className="w-44 h-44 bg-white/5 rounded shadow flex items-center justify-center">
-              <img src="/Banner (1).jpg" alt="owner card" className="max-h-36 object-contain" />
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex space-x-8">
+              <a href="#home" className="text-gray-700 hover:text-orange-600 font-medium">Home</a>
+              <a href="#products" className="text-gray-700 hover:text-orange-600 font-medium">Products</a>
+              <a href="#services" className="text-gray-700 hover:text-orange-600 font-medium">Services</a>
+              <a href="#contact" className="text-gray-700 hover:text-orange-600 font-medium">Contact</a>
+            </nav>
+
+            {/* CTA Button */}
+            <div className="hidden md:block">
+              <a href="#contact" className="bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+                Get Quote
+              </a>
             </div>
           </div>
-        </section>
 
-        <section id="contact" className="mt-12">
-          <h3 className="text-2xl font-semibold">Get a Quote</h3>
-          <p className="mt-2 text-gray-300">Tell us what you need — we will respond quickly (or use WhatsApp).</p>
-
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <form onSubmit={handleQuoteSubmit} className="space-y-4 bg-[rgba(255,255,255,0.02)] p-4 rounded">
-              <div>
-                <label className="block text-sm font-medium text-gray-200">Name</label>
-                <input name="name" required className="mt-1 w-full bg-transparent border border-[rgba(255,255,255,0.06)] rounded px-3 py-2" />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-200">Email</label>
-                <input name="email" type="email" required className="mt-1 w-full bg-transparent border border-[rgba(255,255,255,0.06)] rounded px-3 py-2" />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-200">Service</label>
-                <select name="service" className="mt-1 w-full bg-transparent border border-[rgba(255,255,255,0.06)] rounded px-3 py-2">
-                  <option>Visiting Card</option>
-                  <option>Brochure</option>
-                  <option>Flex / Standee</option>
-                  <option>T-Shirt / Mug</option>
-                  <option>Packaging / Boxes</option>
-                  <option>Custom</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-200">Message</label>
-                <textarea name="message" rows={4} className="mt-1 w-full bg-transparent border border-[rgba(255,255,255,0.06)] rounded px-3 py-2" />
-              </div>
-
-              <div className="flex gap-3">
-                <button type="submit" className="bg-[#ff4d4f] text-black px-4 py-2 rounded-md">Send Quote</button>
-                <a href="https://wa.me/919305697612" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border px-4 py-2 rounded-md text-gray-200">
-                  WhatsApp
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden border-t border-gray-200 bg-white pb-4">
+              <div className="px-4 py-4 space-y-3">
+                <a href="#home" className="block text-gray-700 hover:text-orange-600 font-medium">Home</a>
+                <a href="#products" className="block text-gray-700 hover:text-orange-600 font-medium">Products</a>
+                <a href="#services" className="block text-gray-700 hover:text-orange-600 font-medium">Services</a>
+                <a href="#contact" className="block text-gray-700 hover:text-orange-600 font-medium">Contact</a>
+                <a href="#contact" className="block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold text-center">
+                  Get Quote
                 </a>
               </div>
-            </form>
+            </div>
+          )}
+        </div>
+      </header>
 
-            <div className="p-4 rounded bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.03)]">
-              <h4 className="font-semibold">Contact Details</h4>
-              <p className="mt-2 text-sm text-gray-300">Ravi Kumar — Founder & Director</p>
-              <p className="mt-1 text-sm">Phone: <a href="tel:+919305697612" className="text-[#ff4d4f]">+91 93056 97612</a></p>
-              <p className="text-sm">Email: <a href="mailto:ravi@rkprint.co" className="text-[#ff4d4f]">ravi@rkprint.co</a></p>
-              <p className="mt-3 text-sm">Address:</p>
-              <address className="not-italic text-sm text-gray-300">C-391, Ground Floor, Sector-10, Gautam Buddh Nagar, Noida - 201301</address>
+      {/* Hero Section */}
+      <section id="home" className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+          <div className="max-w-3xl">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Professional Printing Services in NCR
+            </h2>
+            <p className="text-xl md:text-2xl mb-8 text-orange-100">
+              Digital, Offset & Screen Printing for all your business needs. Quality printing solutions delivered on time.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href="#products" className="bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg text-center">
+                Browse Products
+              </a>
+              <a href="#contact" className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-orange-600 transition-colors text-center">
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className="mt-4">
-                <h5 className="text-sm font-medium">Opening Hours</h5>
-                <p className="text-sm text-gray-300">Mon - Sat: 10:00 AM - 7:00 PM</p>
+      {/* Services Section */}
+      <section id="services" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Printing Services
+            </h3>
+            <p className="text-lg text-gray-600">
+              Three specialized printing methods for all your needs
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div key={index} className="bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-xl hover:shadow-xl transition-shadow border-2 border-orange-200">
+                <div className="text-5xl mb-4">{service.icon}</div>
+                <h4 className="text-2xl font-bold text-gray-900 mb-3">{service.title}</h4>
+                <p className="text-gray-600">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section id="products" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Products
+            </h3>
+            <p className="text-lg text-gray-600">
+              Complete printing solutions for businesses and individuals
+            </p>
+          </div>
+
+          {/* Category Filter */}
+          <div className="flex flex-wrap gap-3 justify-center mb-12">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-6 py-3 rounded-full font-semibold transition-colors ${
+                  activeCategory === cat.id
+                    ? 'bg-orange-600 text-white'
+                    : 'bg-white text-gray-700 hover:bg-orange-100'
+                }`}
+              >
+                <span className="mr-2">{cat.icon}</span>
+                {cat.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Products Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            {filteredProducts.map((product, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-xl p-6 hover:shadow-xl transition-all cursor-pointer border-2 border-gray-200 hover:border-orange-500 relative"
+              >
+                {product.popular && (
+                  <span className="absolute top-2 right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                    Popular
+                  </span>
+                )}
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
+                  {product.icon}
+                </div>
+                <h4 className="text-sm font-semibold text-gray-900 group-hover:text-orange-600">
+                  {product.name}
+                </h4>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Why Choose RK Print NCR?
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-4">
+                <span className="text-3xl">⚡</span>
+              </div>
+              <h4 className="text-xl font-semibold text-gray-900 mb-2">Fast Delivery</h4>
+              <p className="text-gray-600">Quick turnaround time for all orders</p>
+            </div>
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-4">
+                <span className="text-3xl">✨</span>
+              </div>
+              <h4 className="text-xl font-semibold text-gray-900 mb-2">Premium Quality</h4>
+              <p className="text-gray-600">High-quality printing with attention to detail</p>
+            </div>
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-4">
+                <span className="text-3xl">💰</span>
+              </div>
+              <h4 className="text-xl font-semibold text-gray-900 mb-2">Best Prices</h4>
+              <p className="text-gray-600">Competitive pricing without compromising quality</p>
+            </div>
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-4">
+                <span className="text-3xl">🤝</span>
+              </div>
+              <h4 className="text-xl font-semibold text-gray-900 mb-2">Expert Support</h4>
+              <p className="text-gray-600">Dedicated team to help with your requirements</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-16 bg-gradient-to-r from-orange-600 to-red-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-white">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to Get Started?
+            </h3>
+            <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+              Contact us today for a free quote on your printing needs
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <div className="flex items-center gap-3 bg-white bg-opacity-20 px-6 py-4 rounded-lg backdrop-blur-sm">
+                <span className="text-2xl">📞</span>
+                <div className="text-left">
+                  <p className="text-sm text-orange-100">Call Us</p>
+                  <p className="font-semibold">+91 XXXXX XXXXX</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-white bg-opacity-20 px-6 py-4 rounded-lg backdrop-blur-sm">
+                <span className="text-2xl">📧</span>
+                <div className="text-left">
+                  <p className="text-sm text-orange-100">Email Us</p>
+                  <p className="font-semibold">info@rkprintncr.com</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-white bg-opacity-20 px-6 py-4 rounded-lg backdrop-blur-sm">
+                <span className="text-2xl">📍</span>
+                <div className="text-left">
+                  <p className="text-sm text-orange-100">Location</p>
+                  <p className="font-semibold">NCR, India</p>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <footer className="mt-12 border-t border-[rgba(255,255,255,0.03)] pt-6 pb-8 text-sm text-gray-400">
-          <div className="flex flex-col md:flex-row md:justify-between gap-4 items-center">
-            <div>© {new Date().getFullYear()} RK Print NCR — All rights reserved.</div>
-            <div className="flex gap-3">
-              <a href="https://www.rkprint.co" className="hover:text-[#ff4d4f]">Website</a>
-              <a href="mailto:ravi@rkprint.co" className="hover:text-[#ff4d4f]">Contact</a>
-              <a href="https://wa.me/919305697612" className="hover:text-[#ff4d4f]">WhatsApp</a>
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div className="col-span-1 md:col-span-2">
+              <h5 className="text-2xl font-bold mb-4">
+                <span className="text-orange-500">RK</span>
+                <span className="text-white"> PRiNT NCR</span>
+              </h5>
+              <p className="text-sm text-gray-400 mb-2">DIGITAL | OFFSET | SCREEN PRINTING</p>
+              <p className="text-sm text-gray-400">
+                Your trusted partner for all printing solutions in NCR. Quality, speed, and affordability in every print.
+              </p>
+            </div>
+            <div>
+              <h5 className="text-white font-semibold mb-4">Quick Links</h5>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#home" className="hover:text-orange-500">Home</a></li>
+                <li><a href="#products" className="hover:text-orange-500">Products</a></li>
+                <li><a href="#services" className="hover:text-orange-500">Services</a></li>
+                <li><a href="#contact" className="hover:text-orange-500">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="text-white font-semibold mb-4">Services</h5>
+              <ul className="space-y-2 text-sm">
+                <li className="hover:text-orange-500">Digital Printing</li>
+                <li className="hover:text-orange-500">Offset Printing</li>
+                <li className="hover:text-orange-500">Screen Printing</li>
+                <li className="hover:text-orange-500">Custom Solutions</li>
+              </ul>
             </div>
           </div>
-        </footer>
-      </main>
+          <div className="border-t border-gray-800 pt-8 text-center text-sm">
+            <p>&copy; 2025 RK Print NCR. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
