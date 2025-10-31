@@ -11,7 +11,7 @@ export default function RKPrintWebsite() {
       icon: '💼', 
       popular: true,
       // Replace with: image: '/images/visiting-card.jpg'
-      image: '/public/visit.webp'
+      image: '/visit.webp'
     },
 
     { 
@@ -19,168 +19,168 @@ export default function RKPrintWebsite() {
       category: 'stationery', 
       icon: '📄', 
       popular: true,
-      image: '/public/letterhead.webp'
+      image: '/letterhead.webp'
     },
     { 
       name: 'ID-Card', 
       category: 'cards', 
       icon: '🪪', 
       popular: true,
-      image: '/public/idcard.jpg'
+      image: '/idcard.jpg'
     },
     { 
       name: 'Lanyard', 
       category: 'accessories', 
       icon: '🏷️', 
       popular: false,
-      image: '/public/lanyard.jpg'
+      image: '/lanyard.jpg'
     },
     { 
       name: 'Folder', 
       category: 'stationery', 
       icon: '📁', 
       popular: false,
-      image: '/public/folder.jpg'
+      image: '/folder.jpg'
     },
     { 
       name: 'Brochure', 
       category: 'marketing', 
       icon: '📰', 
       popular: true,
-      image: '/public/brochureprint.jpg'
+      image: '/brochureprint.jpg'
     },
     { 
       name: 'Catalogue', 
       category: 'marketing', 
       icon: '📚', 
       popular: false,
-      image: '/public/catalogue.webp'
+      image: '/catalogue.webp'
     },
     { 
       name: 'Booklet', 
       category: 'marketing', 
       icon: '📖', 
       popular: false,
-      image: '/public/booklet.avif'
+      image: '/booklet.avif'
     },
     { 
       name: 'Flyers', 
       category: 'marketing', 
       icon: '📃', 
       popular: true,
-      image: '/public/flyer.jpeg'
+      image: '/flyer.jpeg'
     },
     { 
       name: 'Leaflet', 
       category: 'marketing', 
       icon: '🍃', 
       popular: false,
-      image: '/public/leaflet.webp'
+      image: '/leaflet.webp'
     },
     { 
       name: 'Flex Banner', 
       category: 'signage', 
       icon: '🪧', 
       popular: true,
-      image: '/public/flexbannerprint.jpg'
+      image: '/flexbannerprint.jpg'
     },
     { 
       name: 'Vinyl', 
       category: 'signage', 
       icon: '🎨', 
       popular: false,
-      image: '/public/vinylprint.jpeg'
+      image: '/vinylprint.jpeg'
     },
     { 
       name: 'Sunboard', 
       category: 'signage', 
       icon: '📋', 
       popular: false,
-      image: '/public/sunboard.webp'
+      image: '/sunboard.webp'
     },
     { 
       name: 'Standee', 
       category: 'signage', 
       icon: '🚩', 
       popular: true,
-      image: '/public/standee.webp'
+      image: '/standee.webp'
     },
     { 
       name: 'Carry Bag', 
       category: 'packaging', 
       icon: '🛍️', 
       popular: true,
-      image: '/public/bagprint.jpeg'
+      image: '/bagprint.jpeg'
     },
     { 
       name: 'Packaging Boxes', 
       category: 'packaging', 
       icon: '📦', 
       popular: true,
-      image: '/public/printingboximage.jpg'
+      image: '/printingboximage.jpg'
     },
     { 
       name: 'Pen', 
       category: 'accessories', 
       icon: '🖊️', 
       popular: false,
-      image: '/public/penprint.jpg'
+      image: '/penprint.jpg'
     },
     { 
       name: 'Diary', 
       category: 'stationery', 
       icon: '📔', 
       popular: false,
-      image: '/public/diaryprint.jpg'
+      image: '/diaryprint.jpg'
     },
     { 
       name: 'Trophy', 
       category: 'accessories', 
       icon: '🏆', 
       popular: false,
-      image: '/public/trophy.avif'
+      image: '/trophy.avif'
     },
     { 
       name: 'Medal', 
       category: 'accessories', 
       icon: '🥇', 
       popular: false,
-      image: '/public/medal.jpg'
+      image: '/medal.jpg'
     },
     { 
       name: 'T-Shirt', 
       category: 'apparel', 
       icon: '👕', 
       popular: true,
-      image: '/public/tshirt.jpeg'
+      image: '/tshirt.jpeg'
     },
     { 
       name: 'Mug', 
       category: 'gifts', 
       icon: '☕', 
       popular: true,
-      image: '/public/cups.jpeg'
+      image: '/cups.jpeg'
     },
     { 
       name: 'Bottle', 
       category: 'gifts', 
       icon: '🍾', 
       popular: false,
-      image: '/public/bottleprint.jpg'
+      image: '/bottleprint.jpg'
     },
     { 
       name: 'Bag', 
       category: 'accessories', 
       icon: '🎒', 
       popular: false,
-      image: 'public/bag.jpg'
+      image: '/bag.jpg'
     },
     { 
       name: 'Keychain', 
       category: 'accessories', 
       icon: '🔑', 
       popular: true,
-      image: '/public/keychain.jpg'
+      image: '/keychain.jpg'
     },
   ];
 
