@@ -40,7 +40,7 @@ export default function RKPrintWebsite() {
       category: 'stationery', 
       icon: '📁', 
       popular: false,
-      image: 'public/folder.jpg'
+      image: '/public/folder.jpg'
     },
     { 
       name: 'Brochure', 
@@ -124,7 +124,7 @@ export default function RKPrintWebsite() {
       category: 'accessories', 
       icon: '🖊️', 
       popular: false,
-      image: 'public/penprint.jpg'
+      image: '/public/penprint.jpg'
     },
     { 
       name: 'Diary', 
@@ -159,7 +159,7 @@ export default function RKPrintWebsite() {
       category: 'gifts', 
       icon: '☕', 
       popular: true,
-      image: 'public/cups.jpeg'
+      image: '/public/cups.jpeg'
     },
     { 
       name: 'Bottle', 
