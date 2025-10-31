@@ -5,31 +5,183 @@ export default function RKPrintWebsite() {
   const [activeCategory, setActiveCategory] = useState('all');
 
   const products = [
-    { name: 'Visiting Card', category: 'cards', icon: '💼', popular: true },
-    { name: 'Letter Head', category: 'stationery', icon: '📄', popular: true },
-    { name: 'ID-Card', category: 'cards', icon: '🪪', popular: true },
-    { name: 'Lanyard', category: 'accessories', icon: '🏷️', popular: false },
-    { name: 'Folder', category: 'stationery', icon: '📁', popular: false },
-    { name: 'Brochure', category: 'marketing', icon: '📰', popular: true },
-    { name: 'Catalogue', category: 'marketing', icon: '📚', popular: false },
-    { name: 'Booklet', category: 'marketing', icon: '📖', popular: false },
-    { name: 'Flyers', category: 'marketing', icon: '📃', popular: true },
-    { name: 'Leaflet', category: 'marketing', icon: '🍃', popular: false },
-    { name: 'Flex Banner', category: 'signage', icon: '🪧', popular: true },
-    { name: 'Vinyl', category: 'signage', icon: '🎨', popular: false },
-    { name: 'Sunboard', category: 'signage', icon: '📋', popular: false },
-    { name: 'Standee', category: 'signage', icon: '🚩', popular: true },
-    { name: 'Carry Bag', category: 'packaging', icon: '🛍️', popular: true },
-    { name: 'Packaging Boxes', category: 'packaging', icon: '📦', popular: true },
-    { name: 'Pen', category: 'accessories', icon: '🖊️', popular: false },
-    { name: 'Diary', category: 'stationery', icon: '📔', popular: false },
-    { name: 'Trophy', category: 'accessories', icon: '🏆', popular: false },
-    { name: 'Medal', category: 'accessories', icon: '🥇', popular: false },
-    { name: 'T-Shirt', category: 'apparel', icon: '👕', popular: true },
-    { name: 'Mug', category: 'gifts', icon: '☕', popular: true },
-    { name: 'Bottle', category: 'gifts', icon: '🍾', popular: false },
-    { name: 'Bag', category: 'accessories', icon: '🎒', popular: false },
-    { name: 'Keychain', category: 'accessories', icon: '🔑', popular: true },
+    { 
+      name: 'Visiting Card', 
+      category: 'cards', 
+      icon: '💼', 
+      popular: true,
+      // Replace with: image: '/images/visiting-card.jpg'
+      image: '/public/visit.webp'
+    },
+
+    { 
+      name: 'Letter Head', 
+      category: 'stationery', 
+      icon: '📄', 
+      popular: true,
+      image: '/public/letterhead.webp'
+    },
+    { 
+      name: 'ID-Card', 
+      category: 'cards', 
+      icon: '🪪', 
+      popular: true,
+      image: '/public/idcard.jpg'
+    },
+    { 
+      name: 'Lanyard', 
+      category: 'accessories', 
+      icon: '🏷️', 
+      popular: false,
+      image: '/public/lanyard.jpg'
+    },
+    { 
+      name: 'Folder', 
+      category: 'stationery', 
+      icon: '📁', 
+      popular: false,
+      image: 'public/folder.jpg'
+    },
+    { 
+      name: 'Brochure', 
+      category: 'marketing', 
+      icon: '📰', 
+      popular: true,
+      image: '/public/brochureprint.jpg'
+    },
+    { 
+      name: 'Catalogue', 
+      category: 'marketing', 
+      icon: '📚', 
+      popular: false,
+      image: '/public/catalogue.webp'
+    },
+    { 
+      name: 'Booklet', 
+      category: 'marketing', 
+      icon: '📖', 
+      popular: false,
+      image: '/public/booklet.avif'
+    },
+    { 
+      name: 'Flyers', 
+      category: 'marketing', 
+      icon: '📃', 
+      popular: true,
+      image: '/public/flyer.jpeg'
+    },
+    { 
+      name: 'Leaflet', 
+      category: 'marketing', 
+      icon: '🍃', 
+      popular: false,
+      image: '/public/leaflet.webp'
+    },
+    { 
+      name: 'Flex Banner', 
+      category: 'signage', 
+      icon: '🪧', 
+      popular: true,
+      image: '/public/flexbannerprint.jpg'
+    },
+    { 
+      name: 'Vinyl', 
+      category: 'signage', 
+      icon: '🎨', 
+      popular: false,
+      image: '/public/vinylprint.jpeg'
+    },
+    { 
+      name: 'Sunboard', 
+      category: 'signage', 
+      icon: '📋', 
+      popular: false,
+      image: '/public/sunboard.webp'
+    },
+    { 
+      name: 'Standee', 
+      category: 'signage', 
+      icon: '🚩', 
+      popular: true,
+      image: '/public/standee.webp'
+    },
+    { 
+      name: 'Carry Bag', 
+      category: 'packaging', 
+      icon: '🛍️', 
+      popular: true,
+      image: '/public/bagprint.jpeg'
+    },
+    { 
+      name: 'Packaging Boxes', 
+      category: 'packaging', 
+      icon: '📦', 
+      popular: true,
+      image: '/public/printingboximage.jpg'
+    },
+    { 
+      name: 'Pen', 
+      category: 'accessories', 
+      icon: '🖊️', 
+      popular: false,
+      image: 'public/penprint.jpg'
+    },
+    { 
+      name: 'Diary', 
+      category: 'stationery', 
+      icon: '📔', 
+      popular: false,
+      image: '/public/diaryprint.jpg'
+    },
+    { 
+      name: 'Trophy', 
+      category: 'accessories', 
+      icon: '🏆', 
+      popular: false,
+      image: '/public/trophy.avif'
+    },
+    { 
+      name: 'Medal', 
+      category: 'accessories', 
+      icon: '🥇', 
+      popular: false,
+      image: '/public/medal.jpg'
+    },
+    { 
+      name: 'T-Shirt', 
+      category: 'apparel', 
+      icon: '👕', 
+      popular: true,
+      image: '/public/tshirt.jpeg'
+    },
+    { 
+      name: 'Mug', 
+      category: 'gifts', 
+      icon: '☕', 
+      popular: true,
+      image: 'public/cups.jpeg'
+    },
+    { 
+      name: 'Bottle', 
+      category: 'gifts', 
+      icon: '🍾', 
+      popular: false,
+      image: '/public/bottleprint.jpg'
+    },
+    { 
+      name: 'Bag', 
+      category: 'accessories', 
+      icon: '🎒', 
+      popular: false,
+      image: 'public/bag.jpg'
+    },
+    { 
+      name: 'Keychain', 
+      category: 'accessories', 
+      icon: '🔑', 
+      popular: true,
+      image: '/public/keychain.jpg'
+    },
   ];
 
   const categories = [
@@ -190,19 +342,34 @@ export default function RKPrintWebsite() {
             {filteredProducts.map((product, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-xl p-6 hover:shadow-xl transition-all cursor-pointer border-2 border-gray-200 hover:border-orange-500 relative"
+                className="group bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all cursor-pointer border-2 border-gray-200 hover:border-orange-500 relative"
               >
                 {product.popular && (
-                  <span className="absolute top-2 right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  <span className="absolute top-2 right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">
                     Popular
                   </span>
                 )}
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
-                  {product.icon}
+                
+                {/* Image or Icon Display */}
+                <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative overflow-hidden">
+                  {product.image ? (
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="text-5xl group-hover:scale-110 transition-transform">
+                      {product.icon}
+                    </div>
+                  )}
                 </div>
-                <h4 className="text-sm font-semibold text-gray-900 group-hover:text-orange-600">
-                  {product.name}
-                </h4>
+                
+                <div className="p-4">
+                  <h4 className="text-sm font-semibold text-gray-900 group-hover:text-orange-600 text-center">
+                    {product.name}
+                  </h4>
+                </div>
               </div>
             ))}
           </div>
