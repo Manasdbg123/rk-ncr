@@ -432,21 +432,21 @@ export default function RKPrintWebsite() {
                 <span className="text-2xl">📞</span>
                 <div className="text-left">
                   <p className="text-sm text-orange-100">Call Us</p>
-                  <p className="font-semibold">+91 XXXXX XXXXX</p>
+                  <p className="font-semibold">+91 9616148530</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 bg-white bg-opacity-20 px-6 py-4 rounded-lg backdrop-blur-sm">
                 <span className="text-2xl">📧</span>
                 <div className="text-left">
                   <p className="text-sm text-orange-100">Email Us</p>
-                  <p className="font-semibold">info@rkprintncr.com</p>
+                  <p className="font-semibold">ravi@rkprint.co</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 bg-white bg-opacity-20 px-6 py-4 rounded-lg backdrop-blur-sm">
                 <span className="text-2xl">📍</span>
                 <div className="text-left">
                   <p className="text-sm text-orange-100">Location</p>
-                  <p className="font-semibold">NCR, India</p>
+                  <p className="font-semibold">C-391, Ground Floor, Sector-10, Gautam Buddh Nager Noida - 201301 , India</p>
                 </div>
               </div>
             </div>
